@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sterowanie za pomocą klawiszy</title>
+</head>
+
+<body>
+    <canvas id="plotno" width="400" height="400"></canvas>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+    <script>
+
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+        var szerokosc = plotno.width;
+        var wysokosc = plotno.height;
+        var szybkosc = 1;
+
+        var okrag = function (x, y, promien, wypelnijOkrag) {
+            kontekst.beginPath();
+            kontekst.arc(x, y, promien, 0, Math.PI * 2, false);
+            if (wypelnijOkrag) {
+                kontekst.fill();
+            } else {
+                kontekst.stroke();
+            }
+        };
+
+        //KONSTRUKTOR PIŁKA
+        var Pilka = function () {
+            this.x = szerokosc / 2;
+            this.y = wysokosc / 2;
+            this.xSzybkosc = 5;
+            this.ySzybkosc = 0;
+        };
+
+        //AKTUALIZUJ POZYCJE PILKI NA PODSTAWIE JEJ SZYBKOSCI
+        Pilka.prototype.przesuwaj = function () {
+            this.x += this.xSzybkosc;
+            this.y += this.ySzybkosc;
+
+            if (this.x < 0) {
+                this.x *= -1;
+            } else if (this.x > szerokosc) {
+                this.x *= -1;
+            } else if (this.y < 0) {
+                this.y *= -1;
+            } else if (this.y > wysokosc) {
+                this.y *= -1;
+            }
+        };
+
+        //NARYSUJ PILKE W JEJ BIEZACEJ POZYCJI
+        Pilka.prototype.rysuj = function () {
+            okrag(this.x, this.y, 10, true);
+        };
+
+        //USTAW KIERUNEK PILKI NA PODSTAWIE LANCUCHA
+        Pilka.prototype.ustawKierunek = function (kierunek) {
+            if (kierunek === "góra") {
+                this.xSzybkosc = 0;
+                this.ySzybkosc = szybkosc * -1;
+            } else if (kierunek === "dół") {
+                this.xSzybkosc = 0;
+                this.ySzybkosc = szybkosc;
+            } else if (kierunek === "lewa") {
+                this.xSzybkosc = szybkosc * -1;
+                this.ySzybkosc = 0;
+            } else if (kierunek === "prawa") {
+                this.xSzybkosc = szybkosc;
+                this.ySzybkosc = 0;
+            } else if (kierunek === "stop") {
+                this.xSzybkosc = 0;
+                this.ySzybkosc = 0;
+            };
+        };
+
+        Pilka.prototype.szybkosci = function () {
+            if (szybkosci === "1") {
+                szybkosc = 10;
+            } else if (szybkosci === "2") {
+                szybkosc = 15;
+            };
+        };
+
+        //UTWÓRZ OBIEKT PIŁKA
+        var pilka = new Pilka();
+
+        //OBIEKT DO PRZEKSZTAŁCENIA KODÓW I KLAWISZY NA NAZWY DZIAŁAN
+        var dzialaniaKlawiszy = {
+            32: "stop",
+            37: "lewa",
+            38: "góra",
+            39: "prawa",
+            40: "dół"
+        };
+
+        var szybkosci = {
+            49: szybkosc += 5,
+            50: szybkosc += 10,
+            51: szybkosc += 15,
+            52: szybkosc += 20,
+            53: szybkosc += 25,
+            54: szybkosc += 30,
+            55: szybkosc += 35,
+            56: szybkosc += 40,
+            57: szybkosc += 45
+        };
+
+        $("body").keydown(function (zdarzenie) {
+            var kierunek = dzialaniaKlawiszy[(zdarzenie.keyCode)];
+            pilka.ustawKierunek(kierunek);
+        });
+
+        setInterval(function () {
+            kontekst.clearRect(0, 0, szerokosc, wysokosc);
+
+            pilka.rysuj();
+            pilka.przesuwaj();
+
+            kontekst.strokeRect(0, 0, szerokosc, wysokosc);
+        }, 30);
+
+    </script>
+</body>
+
+</html>

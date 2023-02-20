@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Canvas</title>
+</head>
+
+<body>
+
+	<canvas id="plotno" width='500' height='500'></canvas>
+
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+	<script>
+
+		/*
+		var plotno = document.getElementById('plotno');
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.fillStyle = "Fuchsia";
+		kontekst.fillRect(100, 0, 50, 50);
+		kontekst.fillRect(120, 50, 10, 20);
+		kontekst.fillRect(45, 60, 160, 10);
+		kontekst.fillRect(100, 70, 50, 50);
+		kontekst.fillRect(100, 120, 10, 10);
+		kontekst.fillRect(140, 120, 10, 10);
+		kontekst.fillRect(50, 50, 5, 10);
+		kontekst.fillRect(190, 50, 5, 10);
+		//CHŁOPEK Z FAKERKEM
+		*/
+
+		/*
+		var plotno = document.getElementById('plotno');
+		var turkus = plotno.getContext("2d");
+
+		turkus.fillStyle = "Turquoise";
+		turkus.fillRect(0, 0, 50, 100);
+
+		var fuksja = plotno.getContext("2d");
+		fuksja.fillStyle = "Fuchsia";
+		fuksja.fillRect(50, 0, 50, 100);
+
+		var seledyn = plotno.getContext("2d");
+		seledyn.fillStyle = "PaleGreen";
+		seledyn.fillRect(100, 0, 50, 100);
+		//TRZYKOLOROWE PROSROKĄTY
+		*/
+
+		/*
+		var plotno = document.getElementById('plotno');
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.strokeStyle = "DeepPink";
+		kontekst.lineWidth = 4;
+		kontekst.strokeRect(10, 10, 100, 20);
+		//PROSTOKĄT
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.strokeStyle = "Turquoise";
+		kontekst.lineWidth = 4;
+		kontekst.beginPath();
+		kontekst.moveTo(10, 10);
+		kontekst.lineTo(60, 60);
+		kontekst.moveTo(60, 10);
+		kontekst.lineTo(10, 60);
+		kontekst.stroke();
+		//KRZYŻYK
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.strokeStyle = "Turquoise";
+		kontekst.lineWidth = 4;
+		kontekst.strokeRect(30, 5, 20, 20);
+		kontekst.beginPath();
+		kontekst.moveTo(40, 25);
+		kontekst.lineTo(40, 70);
+		kontekst.moveTo(40, 40);
+		kontekst.lineTo(15, 15);
+		kontekst.moveTo(40, 40);
+		kontekst.lineTo(65, 15);
+		kontekst.moveTo(40, 50);
+		kontekst.lineTo(15, 80);
+		kontekst.moveTo(40, 50);
+		kontekst.lineTo(55, 80);
+		kontekst.stroke();
+		//LUDZIK Z SIUSIAKIEM
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.fillStyle = "SkyBlue";
+		kontekst.beginPath();
+		kontekst.moveTo(100, 100);
+		kontekst.lineTo(100, 60);
+		kontekst.lineTo(130, 30);
+		kontekst.lineTo(160, 60);
+		kontekst.lineTo(160, 100);
+		kontekst.lineTo(100, 100);
+		kontekst.fill();
+		//DOMEK
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		kontekst.lineWidth = 2;
+		kontekst.strokeStyle = "Green";
+
+		kontekst.beginPath();
+		kontekst.arc(50,50,20,0, Math.PI/2, false);
+		kontekst.stroke();
+
+		kontekst.beginPath();
+		kontekst.arc(100,50,20,0, Math.PI, false);
+		kontekst.stroke();
+
+		kontekst.beginPath();
+		kontekst.arc(150,50,20,0, Math.PI * 2, false);
+		kontekst.stroke();
+		//OKRĘGI NIEDOKOŃCZONE
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		var okrag = function (x,y,promien,wypelnijOkrag) {
+			
+			kontekst.beginPath();
+			kontekst.arc(x,y,promien,0,Math.PI * 2, false);
+			kontekst.stroke();
+			
+			if (wypelnijOkrag == true) {
+				kontekst.fillStyle = kontekst.strokeStyle;
+				kontekst.fill();
+			};
+		};
+
+		kontekst.lineWidth = 4;
+
+		kontekst.strokeStyle = "Red";
+		okrag(100,100,10);
+		kontekst.fillStyle = "Red";
+		kontekst.fill();
+
+		kontekst.strokeStyle = "Orange";
+		okrag(100,100,20,);
+
+		kontekst.strokeStyle = "Yellow";
+		okrag(100,100,30,true);
+
+		kontekst.strokeStyle = "Green";
+		okrag(100,100,40);
+
+		kontekst.strokeStyle = "Blue";
+		okrag(100,100,50);
+
+		kontekst.strokeStyle = "Purple";
+		okrag(100,100,60);
+		// KOLOROWE OKRĘGI
+		*/
+
+		/*
+		var plotno = document.getElementById("plotno");
+		var kontekst = plotno.getContext("2d");
+
+		var krag = function (x, y, promien, wypelnijOrkag, kolor, szerokoscLini) {
+			kontekst.lineWidth = szerokoscLini;
+			kontekst.strokeStyle = kolor;
+			kontekst.fillStyle = kolor;
+
+			kontekst.beginPath();
+			kontekst.arc(x, y, promien, 0, Math.PI * 2, false);
+			kontekst.stroke();
+
+			if (wypelnijOrkag == true) {
+				kontekst.fillStyle = kontekst.strokeStyle;
+				kontekst.fill();
+			};
+		};
+
+		krag(200, 50, 30, false, "", 3);
+		krag(200, 130, 50, false, "", 3);
+		krag(200, 55, 5, true, "DarkOrange", 2);
+		krag(190, 40, 5, true, "Red", 2);
+		krag(190, 40, 1, true, "Black", 2);
+		krag(210, 40, 5, true, "Red", 2);
+		krag(210, 40, 1, true, "Black", 2);
+		krag(200, 100, 5, true, "Black", 2);
+		krag(200, 120, 5, true, "Black", 2);
+		krag(200, 140, 5, true, "Black", 2);
+		krag(200, 160, 5, true, "Black", 2);
+		krag(140, 60, 7, true, "Maroon", 2);
+		krag(260, 60, 7, true, "Maroon", 2);
+
+		kontekst.fillStyle = "DarkOrange";
+		kontekst.beginPath();
+		kontekst.moveTo(200, 50);
+		kontekst.lineTo(220, 70);
+		kontekst.lineTo(200, 60);
+		kontekst.fill();
+
+		kontekst.strokeStyle = "Maroon";
+		kontekst.lineWidth = 3;
+		kontekst.beginPath();
+		kontekst.moveTo(170, 100);
+		kontekst.lineTo(140, 60);
+		kontekst.moveTo(230, 100);
+		kontekst.lineTo(260, 60);
+		kontekst.moveTo(137, 60);
+		kontekst.lineTo(137, 45);
+		kontekst.moveTo(263, 60);
+		kontekst.lineTo(263, 45);
+		kontekst.stroke();
+		//BAŁWAN Z FAKASAMI
+		*/
+
+		/*
+		var rysujBalwana = function (x, y) {
+
+			var plotno = document.getElementById("plotno");
+			var kontekst = plotno.getContext("2d");
+
+			var krag = function (x, y, promien, wypelnijOrkag, kolor, szerokoscLini) {
+				kontekst.lineWidth = szerokoscLini;
+				kontekst.strokeStyle = kolor;
+				kontekst.fillStyle = kolor;
+
+				kontekst.beginPath();
+				kontekst.arc(x, y, promien, 0, Math.PI * 2, false);
+				kontekst.stroke();
+
+				if (wypelnijOrkag == true) {
+					kontekst.fillStyle = kontekst.strokeStyle;
+					kontekst.fill();
+				};
+			};
+
+			krag(x, y - 80, 30, false, "", 3);
+			krag(x, y, 50, false, "", 3);
+			krag(x, y - 75, 5, true, "DarkOrange", 2);
+			krag(x - 10, y - 90, 5, true, "Red", 2);
+			krag(x - 10, y - 90, 1, true, "Black", 2);
+			krag(x + 10, y - 90, 5, true, "Red", 2);
+			krag(x + 10, y - 90, 1, true, "Black", 2);
+			krag(x, y - 30, 5, true, "Black", 2);
+			krag(x, y - 10, 5, true, "Black", 2);
+			krag(x, y + 10, 5, true, "Black", 2);
+			krag(x, y + 30, 5, true, "Black", 2);
+			krag(x - 60, y - 70, 7, true, "Maroon", 2);
+			krag(x + 60, y - 70, 7, true, "Maroon", 2);
+
+			kontekst.fillStyle = "DarkOrange";
+			kontekst.beginPath();
+			kontekst.moveTo(x, y - 80);
+			kontekst.lineTo(x + 20, y - 60);
+			kontekst.lineTo(x, y - 70);
+			kontekst.fill();
+
+			kontekst.strokeStyle = "Maroon";
+			kontekst.lineWidth = 3;
+			kontekst.beginPath();
+			kontekst.moveTo(x - 30, y - 30);
+			kontekst.lineTo(x - 60, y - 70);
+			kontekst.moveTo(x + 30, y - 30);
+			kontekst.lineTo(x + 60, y - 70);
+			kontekst.moveTo(x - 63, y - 70);
+			kontekst.lineTo(x - 63, y - 85);
+			kontekst.moveTo(x + 63, y - 70);
+			kontekst.lineTo(x + 63, y - 85);
+			kontekst.stroke();
+		};
+
+		rysujBalwana(200, 400);
+		//FUNKCJA RYSOWANIE BAŁWANA W PODANYCH WSPÓŁRZĘDNYCH
+		*/
+
+		/*
+		var punkty = [[50, 50], [50, 100], [100, 100], [100, 50], [50, 50]];
+		var tajemniczePunkty = [[0, 1], [50, 50], [50, 100], [25, 120], [100, 50], [70, 90], [100, 90], [70, 120]];
+		var rysujPunkty = function (punkty) {
+
+			var plotno = document.getElementById("plotno");
+			var kontekst = plotno.getContext("2d");
+			kontekst.strokeStyle = "Maroon";
+			kontekst.lineWidth = 3;
+
+			kontekst.beginPath();
+
+			for (var i = 0; i < punkty.length; i++) {
+				var punkt = punkty[i];
+				kontekst.lineTo(punkt[0], punkt[1]);
+			};
+			kontekst.stroke();
+		};
+		rysujPunkty(tajemniczePunkty);
+		//FUKCJA RYSUJĄCA PUNKTY Z TABLICY
+		*/
+
+
+
+		$("html").mousemove(function (event) {
+
+			var plotno = document.getElementById("plotno");
+			var kontekst = plotno.getContext("2d");
+
+			kontekst.beginPath();
+			kontekst.arc(event.pageX, event.pageY, 3, 0, Math.PI * 2, false);
+			kontekst.stroke();
+		});
+
+	</script>
+</body>
+
+</html>

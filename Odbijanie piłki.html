@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Odbijająca się piłka
+    </title>
+</head>
+
+<body>
+    <canvas id="plotno" width="300" height="500"> </canvas>
+
+    <script>
+
+        var Pilka = function () {
+            this.x = 100;
+            this.y = 100;
+            this.xSzybkosc = Math.random() * 5 - 5;
+            this.ySzybkosc = Math.random() * 5 - 5;
+            this.kolor = wybierzLosowyKolor(kolory);
+        };
+
+
+        var okrag = function (x, y, promien, wypelnijOkrag, kolor) {
+            kontekst.beginPath();
+            kontekst.arc(x, y, promien, 0, Math.PI * 2, false);
+            if (wypelnijOkrag) {
+                kontekst.fillStyle = kolor;
+                kontekst.fill();
+            } else {
+                kontekst.stroke();
+            }
+        };
+
+        var kolory = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+        var wybierzLosowyKolor = function (kolory) {
+            return kolory[Math.floor(Math.random() * kolory.length)];
+        };
+
+
+        Pilka.prototype.rysuj = function () {
+            okrag(this.x, this.y, 10, true, this.kolor);
+        };
+
+        Pilka.prototype.przesuwaj = function () {
+            this.x += this.xSzybkosc;
+            this.y += this.ySzybkosc;
+        };
+
+        Pilka.prototype.sprawdzajKolizje = function () {
+            var szerokosc = plotno.width;
+            var wysokosc = plotno.height;
+
+            if (this.x < 0 || this.x > szerokosc) {
+                this.xSzybkosc = -this.xSzybkosc;
+            }
+            if (this.y < 0 || this.y > wysokoscs) {
+                this.ySzybkosc = -this.ySzybkosc;
+            }
+        };
+
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+
+
+        var pilki = [];
+        for (var i = 0; i < 10; i++) {
+            pilki.push(new Pilka());
+        };
+
+        setInterval(function () {
+
+            var szerokosc = plotno.width;
+            var wysokosc = plotno.height;
+
+            kontekst.clearRect(0, 0, szerokosc, wysokosc);
+            for (var i = 0; i < pilki.length; i++) {
+                var pilka = pilki[i];
+                pilka.rysuj();
+                pilka.przesuwaj();
+                pilka.sprawdzajKolizje();
+            };
+
+            kontekst.strokeRect(0, 0, szerokosc, wysokosc)
+        }, 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

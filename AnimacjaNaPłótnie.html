@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Animacja na płótnie</title>
+</head>
+
+<body>
+    <canvas id="plotno" width="200" height="200"></canvas>
+
+    <script>
+
+        /*
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+
+        var position = 0;
+
+        setInterval(function () {
+            kontekst.clearRect(0, 0, 200, 200); //CZYSZCZENIE PŁÓTNA
+            kontekst.fillRect(position, 0, 20, 20);
+
+            position++;
+            if (position > 200) {
+                position = 0;
+            }
+        }, 30);
+        //JEŻDZĄCY KWADRAT
+        */
+
+        /*
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+
+        var size = 0;
+
+        setInterval(function () {
+            kontekst.clearRect(0, 0, 200, 200); //CZYSZCZENIE PŁÓTNA
+            kontekst.fillRect(0, 0, size, size);
+
+            size++;
+            if (size > 200) {
+                size = 0;
+            }
+        }, 30);
+        //ROSNĄCY KWADRAT
+        */
+
+        /*
+        var okrag = function (x, y, promien, wypelnijOkrag) {
+            kontekst.beginPath();
+            kontekst.arc(x, y, promien, 0, Math.PI * 2, false);
+            if (wypelnijOkrag) {
+                kontekst.fill();
+            } else {
+                kontekst.stroke();
+            }
+        };
+
+        var rysujPszczole = function (x, y) {
+            kontekst.lineWidth = 2;
+            kontekst.strokeStyle = "Black";
+            kontekst.fillStyle = "Gold";
+
+            okrag(x, y, 8, true);
+            okrag(x, y, 8, false);
+            okrag(x - 5, y - 11, 5, false);
+            okrag(x + 5, y - 11, 5, false);
+            okrag(x - 2, y - 1, 2, false);
+            okrag(x + 2, y - 1, 2, false);
+
+            kontekst.lineWidth = 1;
+            kontekst.strokeStyle = "Red";
+            kontekst.fillStyle = "Red";
+            okrag(x, y + 4, 2, true);
+        };
+
+        var aktualizuj = function (wspolrzedna) {
+            var przesuniecie = Math.random() * 4 - 2;
+            wspolrzedna += przesuniecie;
+
+            if (wspolrzedna > 200) {
+                wspolrzedna = 200;
+            }
+            if (wspolrzedna < 0) {
+                wspolrzedna = 0;
+            }
+            return wspolrzedna;
+        };
+
+
+        var plotno = document.getElementById("plotno");
+        var kontekst = plotno.getContext("2d");
+
+        var x = 100;
+        var y = 100;
+
+        setInterval(function () {
+            kontekst.clearRect(0, 0, 200, 200);
+
+            rysujPszczole(x, y);
+            x = aktualizuj(x);
+            y = aktualizuj(y);
+
+            kontekst.strokeRect(0,0,200,200);
+        },30);
+        //LATAJĄCA PSZCZÓŁKA
+        */
+
+    </script>
+</body>
+
+</html>
